@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">lifeCycle</string>
+    <string name="add_guess">Enter guess</string>
+    <string name="add_the_guess">Add The Guess</string>
+</resources>
