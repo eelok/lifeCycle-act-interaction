@@ -36,12 +36,6 @@ public class ShowGuss extends AppCompatActivity {
                 finish();
             }
         });
-
-//          first method to get something from mainActivity
-//        if (getIntent().getStringExtra("textFieldInput") != null) {
-//            received_textview.setText(getIntent().getStringExtra("textFieldInput"));
-//        }
-
     }
 
 

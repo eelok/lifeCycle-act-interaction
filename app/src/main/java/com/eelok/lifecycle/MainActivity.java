@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == REQUEST_CODE_MAIN){
-            //todo что это за штука???
             assert data != null;
             String message = data.getStringExtra("message_back");
             Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
