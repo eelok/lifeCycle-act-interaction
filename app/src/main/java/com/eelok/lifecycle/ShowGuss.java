@@ -2,15 +2,15 @@ package com.eelok.lifecycle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class ShowGuss extends AppCompatActivity {
 
     private TextView received_textview;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,23 @@ public class ShowGuss extends AppCompatActivity {
             Log.d("Age", "" + extra.getInt("age"));
         }
 
+
+        received_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+                intent.putExtra("message_back", "FROM second Activity");
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
 //          first method to get something from mainActivity
 //        if (getIntent().getStringExtra("textFieldInput") != null) {
 //            received_textview.setText(getIntent().getStringExtra("textFieldInput"));
 //        }
 
     }
+
+
 }

@@ -1,20 +1,20 @@
 package com.eelok.lifecycle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingComponent;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
-import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.eelok.lifecycle.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding viewBinding;
+    private final int REQUEST_CODE_MAIN = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("textFieldInput", userInput);
                     intent.putExtra("name", "John Smith");
                     intent.putExtra("age", 30);
-                    startActivity(intent);
+                    startActivityForResult(intent, REQUEST_CODE_MAIN);
+//                    startActivity(intent);
                 } else {
                     Toast.makeText(MainActivity.this, "Enter a word", Toast.LENGTH_SHORT).show();
                 }
@@ -40,6 +41,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQUEST_CODE_MAIN){
+            //todo что это за штука???
+            assert data != null;
+            String message = data.getStringExtra("message_back");
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
 //    @Override
 //    protected void onStart() {
